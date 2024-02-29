@@ -22,4 +22,8 @@ public class CategorieController {
     private ResponseEntity<Categorie> liste(@RequestBody final Categorie categorie){
         return ResponseEntity.ok(categorieRepository.save(categorie));
     }
+    @DeleteMapping("/{id}")
+    private void delete(@PathVariable final String id){
+        categorieRepository.deleteById(id);
+    }
 }
