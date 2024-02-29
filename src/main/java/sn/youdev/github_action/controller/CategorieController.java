@@ -15,11 +15,19 @@ public class CategorieController {
     private final CategorieRepository categorieRepository;
 
     @GetMapping
-    private ResponseEntity<List<Categorie>> liste(){
+    public ResponseEntity<List<Categorie>> liste(){
         return ResponseEntity.ok(categorieRepository.findAll());
     }
     @PostMapping
-    private ResponseEntity<Categorie> liste(@RequestBody final Categorie categorie){
+    public ResponseEntity<Categorie> liste(@RequestBody final Categorie categorie){
         return ResponseEntity.ok(categorieRepository.save(categorie));
+    }
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable final String id){
+        categorieRepository.deleteById(id);
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Categorie> findByid(@PathVariable final String id){
+        return ResponseEntity.ok(categorieRepository.findById(id).orElseThrow(IllegalArgumentException::new));
     }
 }
