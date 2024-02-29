@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  app_spring:
+    build: .
+    ports:
+        - "8080:8080"
+    restart: unless-stopped
+    networks:
+      app-network:
+        aliases:
+          - app_spring
+  mongoapp:
+    image: mongo:latest
+    volumes:
+      - mysql-data:/etc/mongo
+    networks:
+      app-network:
+        aliases:
+          - mongoapp
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
