@@ -11,10 +11,10 @@ pipeline {
         sh "docker-compose up"
       }
     }
-    stage('Deploy') {
-      steps {
-        sh "docker run --name springboot-mapstruct -d -p 8080:8080 springboot-mapstruct:v1"
-      }
-    }
+//     stage('Deploy') {
+//       steps {
+//         sh "docker run --name springboot-mapstruct -d -p 8080:8080 springboot-mapstruct:v1"
+//       }
+//     }
   }
 }
