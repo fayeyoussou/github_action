@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools{
-      maven 'maven'
-  }
   stages {
     stage('Build') {
       steps {
@@ -11,13 +8,13 @@ pipeline {
     }
     stage('Build Docker image') {
       steps {
-        sh "docker build -t springboot-mapstruct:v1 ."
+        sh "docker-compose up"
       }
     }
-    stage('Deploy') {
-      steps {
-        sh "docker run --name springboot-mapstruct -d -p 8080:8080 springboot-mapstruct:v1"
-      }
-    }
+//     stage('Deploy') {
+//       steps {
+//         sh "docker run --name springboot-mapstruct -d -p 8080:8080 springboot-mapstruct:v1"
+//       }
+//     }
   }
 }
