@@ -1,0 +1,12 @@
+apiVersion: v1 # Kubernetes API version
+kind: Service # Type de ressource kubernetes cree Eg : service
+metadata:
+  name: github-action-k8s-service # nom du ressource
+spec:
+  selector:
+    app: github-action-k8s-deployment
+  ports:
+    - protocol: "TCP"
+      port: 8080 # port ou le service tourne dans le cluster
+      targetPort: 8080 # Port expose par le service
+  type: NodePort # type de service
